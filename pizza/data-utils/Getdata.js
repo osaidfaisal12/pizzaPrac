@@ -13,6 +13,5 @@ export async function getData() {
   for (const key in data) {
     items.push({id:key,...data[key]});
   }
-
   return items;
 }
