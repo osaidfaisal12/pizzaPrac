@@ -19,7 +19,7 @@ const Cart = (props) => {
                     </div>
                     <div className=' flex flex-wrap  overflow-x-hidden'>
                         {ctx.cartitems.map((current) => {
-                            return (<CartItem key={current.id} id={current.id} img={current.img} title={current.title} description={current.description} amount={current.amount} count={current.count} />)
+                            return (<CartItem key={`${current.id}_${current.type}`} id={current.id} img={current.img} title={current.title} description={current.description} amount={current.amount} type={current.type} count={current.count} />)
                         })}
                     </div>
                     <button className='mt-auto w-full bg-[#03911f] text-white py-4 rounded-md '>

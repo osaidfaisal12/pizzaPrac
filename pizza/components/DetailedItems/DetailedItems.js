@@ -1,18 +1,25 @@
 import Image from 'next/image'
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { StoreProvider } from '../../data-utils/Store'
 
 const DetailedItems = (props) => {
     const ctx = useContext(StoreProvider)
 
-    const [count, setCount] = useState(0)
+    const [count, setCount] = useState(1)
+    const [selectedValue, setSelectedValue] = useState(props.small.amount)
+    const [selectedLabel, setSelectedLabel] = useState(props.small.size)
+
+    function handleRadioClick(e) {
+        setSelectedValue(e.target.value)
+        setSelectedLabel(e.target.labels[0].innerText);
+    }
 
     function addCountHandler() {
         setCount(count + 1)
     }
 
     function subCountHandler() {
-        if (count >= 1) {
+        if (count > 1) {
             setCount(count - 1)
         }
 
@@ -22,6 +29,8 @@ const DetailedItems = (props) => {
     function addItemHandler(id) {
         const cartItem = ctx.data.filter(current => current.id === id)[0]
         cartItem.count = count
+        cartItem.amount = selectedValue
+        cartItem.type = selectedLabel
         ctx.addToCartHandler(cartItem)
         setCount(0)
         props.onClose()
@@ -32,7 +41,7 @@ const DetailedItems = (props) => {
             <div className='w-[800px] flex h-[500px] bg-white rounded-2xl'>
                 <div className='w-[50%] h-[100%] flex justify-center items-center'>
                     <div className='overflow-hidden relative object-contain w-[350px] h-[350px]'>
-                        <Image fill src={props.img} alt={props.title} />
+                        <Image width={350} height={350} src={props.img} alt={props.title} />
                     </div>
 
                 </div>
@@ -42,33 +51,33 @@ const DetailedItems = (props) => {
                         <button onClick={props.onClose} className='font-bold'>X</button>
                     </div>
 
-                    <p className='text-[1.375rem] mb-2 font-[700]' >${props.amount}</p>
+                    <p className='text-[1.375rem] mb-2 font-[700]' >${props.small.amount}</p>
                     <p className='mb-2'>{props.description}</p>
                     <div className='flex flex-col gap-4 text-[1.2rem] mt-6'>
                         <div className='flex justify-between'>
                             <div>
-                                <input type='radio' name='radio' id='small' value='small' className='mr-2' />
-                                <label htmlFor='small' >Small</label>
+                                <input type='radio' name='radio' id='small' value={props.small.amount} onChange={handleRadioClick} defaultChecked={selectedValue === props.small.amount} className='mr-2' />
+                                <label htmlFor='small' >{props.small.size}</label>
                             </div>
-                            <p>12$</p>
+                            <p>{props.small.amount}$</p>
 
                         </div>
                         <hr />
                         <div className='flex justify-between'>
                             <div>
-                                <input type='radio' name='radio' id='medium' value='medium' className='mr-2' />
-                                <label htmlFor='medium' >medium</label>
+                                <input type='radio' name='radio' id='medium' value={props.medium.amount} onChange={handleRadioClick} defaultChecked={selectedValue === props.medium.amount} className='mr-2' />
+                                <label htmlFor='medium' >{props.medium.size}</label>
                             </div>
-                            <p>16$</p>
+                            <p>{props.medium.amount}$</p>
 
                         </div>
                         <hr />
                         <div className='flex justify-between'>
                             <div>
-                                <input type='radio' name='radio' id='large' value='large' className='mr-2' />
-                                <label htmlFor='large' >large</label>
+                                <input type='radio' name='radio' id='large' value={props.large.amount} onChange={handleRadioClick} defaultChecked={selectedValue === props.large.amount} className='mr-2' />
+                                <label htmlFor='large' >{props.large.size}</label>
                             </div>
-                            <p>20$</p>
+                            <p>{props.large.amount}$</p>
 
                         </div>
                         <hr />

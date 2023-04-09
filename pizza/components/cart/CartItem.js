@@ -3,14 +3,22 @@ import React, { useContext } from "react";
 import { StoreProvider } from "../../data-utils/Store";
 
 const CartItem = (props) => {
-  const { img, title, amount, description, count, id } = props
+  const { img, title, amount, description, count, id, type } = props
 
   const ctx = useContext(StoreProvider)
 
-  const updateItemHandler = (id) => {
-    const cartItem = ctx.data.filter(current => current.id === id)[0]
+  const addItemHandler = (id,type) => {
+    const cartItem = ctx.data.filter(current => (current.id === id) )[0]
     cartItem.count = 1
+    cartItem.type = type
     ctx.addToCartHandler(cartItem)
+  };
+
+  const removeItemHandler = (id,type) => {
+    const cartItem = ctx.data.filter(current => (current.id === id) )[0]
+    cartItem.count = 1
+    cartItem.type = type
+    ctx.removeToCartHandler(cartItem)
   };
 
   return (
@@ -20,15 +28,15 @@ const CartItem = (props) => {
       </div>
       <div className="flex flex-col w-[300px]">
         <div className="flex justify-between">
-          <p className="text-[1.2rem] font-bold">{title}</p>
+          <p className="text-[1.2rem] font-bold">{title}<span className="text-[0.8rem] mx-[6px] font-[400]">({type})</span></p>
           <p className="font-bold">${parseInt(amount) * parseInt(count)}</p>
         </div>
         <p>{description}</p>
         <div className="ml-auto text-center">
           <div className="flex  mt-auto gap-3">
-            <button onClick={() => updateItemHandler(id)}>+</button>
+            <button onClick={() => addItemHandler(id,type)}>+</button>
             <p>{count}</p>
-            <button>-</button>
+            <button  onClick={() => removeItemHandler(id,type)}>-</button>
           </div>
         </div>
       </div>

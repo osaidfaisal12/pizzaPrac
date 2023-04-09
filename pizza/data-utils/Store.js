@@ -1,65 +1,75 @@
 const { createContext, useState, useEffect } = require("react");
 
 export const StoreProvider = createContext({
-  items: [],
-  checkCart: [],
-  noOfItems: 0,
-  forCart: [],
-  itemsdata: [],
-  setData: () => { },
-  addItems: () => { },
-  filteredItems: () => { },
+  // items: [],
+  // checkCart: [],
+  // noOfItems: 0,
+  // forCart: [],
+  // setData: () => {},
+  // addItems: () => {},
+  // filteredItems: () => {},
+  // removeToCartHandler: () => {},
   // removeItems: ()=>{}
 });
 
 export function Store(props) {
   const [cartItems, setCartItems] = useState([]); // items in the cart
   const [noOfItems, setNoOfItems] = useState(0);
-  const [data, setdata] = useState([]) //list of all the items
-
+  const [data, setdata] = useState([]); //list of all the items
 
   function setDataHandler(itemsList) {
-    const newList = [...itemsList]
-    setdata(newList)
-  }
-
-  function addItemsHandler(newItem) {
-    setCartItems((prevItem) => [...prevItem, newItem]);
-    setNoOfItems((prev) => prev + 1);
+    const newList = [...itemsList];
+    setdata(newList);
   }
 
   function addToCartHandler(newItem) {
-    const existingItem = cartItems.find((item) => item.id === newItem.id);
-    if (existingItem) {
+    const existingItemID = cartItems.find((item) => (item.id === newItem.id)&&(item.type === newItem.type) );
+    console.log("existingItemID",existingItemID);
+    
+    if (existingItemID) {
       setCartItems((prevItem) =>
         prevItem.map((item) => {
-          if (item.id === newItem.id) {
-            return { ...item, count: item.count + newItem.count }
+          if ((item.id === newItem.id) && (item.type === newItem.type) ) {
+            console.log("item", item);
+            return { ...item, count: item.count + newItem.count };
           } else {
-            return item
+            return item;
           }
-        }
-        )
+        })
       );
     } else {
       setCartItems((prevItem) => [...prevItem, { ...newItem }]);
     }
   }
 
-  useEffect(() => {
-    const totalCount = cartItems.reduce((acc, item) => acc + item.count, 0)
-    setNoOfItems(totalCount)
-  }, [cartItems])
+  function removeItemHandler(newItem) {
+    setCartItems((prevItem) =>
+      prevItem.map((item) => {
+        if (item.id === newItem.id && item.count > 1 && item.type === newItem.type) {
+          return { ...item, count: item.count - newItem.count };
+        } else if (item.id === newItem.id && item.count === 1 && item.type === newItem.type ) {
+          return null;
+        }
+         else{
+          return item;
+        }
+      }).filter(item => item !== null)
+    );
+  }
 
-  // const filteredItems = filteredItemsHandler(items);
+  useEffect(() => {
+    const totalCount = cartItems.reduce((acc, item) => acc + item.count, 0);
+    setNoOfItems(totalCount);
+    console.log("cartItems", cartItems);
+  }, [cartItems]);
 
   const value = {
     cartitems: cartItems,
     noOfItems: noOfItems,
     addToCartHandler: addToCartHandler,
-    addItems: addItemsHandler,
+    removeToCartHandler: removeItemHandler,
     data: data,
-    setData: setDataHandler
+    setData: setDataHandler,
   };
   return (
     <StoreProvider.Provider value={value}>
