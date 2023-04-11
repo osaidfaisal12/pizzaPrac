@@ -14,6 +14,5 @@ export async function getData() {
     items.push({id:key,...data[key]});
   }
 
-  console.log(items)
   return items;
 }

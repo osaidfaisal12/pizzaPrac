@@ -1,16 +1,6 @@
 const { createContext, useState, useEffect } = require("react");
 
-export const StoreProvider = createContext({
-  // items: [],
-  // checkCart: [],
-  // noOfItems: 0,
-  // forCart: [],
-  // setData: () => {},
-  // addItems: () => {},
-  // filteredItems: () => {},
-  // removeToCartHandler: () => {},
-  // removeItems: ()=>{}
-});
+export const StoreProvider = createContext({});
 
 export function Store(props) {
   const [cartItems, setCartItems] = useState([]); // items in the cart
@@ -23,13 +13,15 @@ export function Store(props) {
   }
 
   function addToCartHandler(newItem) {
-    const existingItemID = cartItems.find((item) => (item.id === newItem.id)&&(item.type === newItem.type) );
-    console.log("existingItemID",existingItemID);
-    
+    const existingItemID = cartItems.find(
+      (item) => item.id === newItem.id && item.type === newItem.type
+    );
+    console.log("existingItemID", existingItemID);
+
     if (existingItemID) {
       setCartItems((prevItem) =>
         prevItem.map((item) => {
-          if ((item.id === newItem.id) && (item.type === newItem.type) ) {
+          if (item.id === newItem.id && item.type === newItem.type) {
             console.log("item", item);
             return { ...item, count: item.count + newItem.count };
           } else {
@@ -44,16 +36,25 @@ export function Store(props) {
 
   function removeItemHandler(newItem) {
     setCartItems((prevItem) =>
-      prevItem.map((item) => {
-        if (item.id === newItem.id && item.count > 1 && item.type === newItem.type) {
-          return { ...item, count: item.count - newItem.count };
-        } else if (item.id === newItem.id && item.count === 1 && item.type === newItem.type ) {
-          return null;
-        }
-         else{
-          return item;
-        }
-      }).filter(item => item !== null)
+      prevItem
+        .map((item) => {
+          if (
+            item.id === newItem.id &&
+            item.count > 1 &&
+            item.type === newItem.type
+          ) {
+            return { ...item, count: item.count - newItem.count };
+          } else if (
+            item.id === newItem.id &&
+            item.count === 1 &&
+            item.type === newItem.type
+          ) {
+            return null;
+          } else {
+            return item;
+          }
+        })
+        .filter((item) => item !== null)
     );
   }
 
