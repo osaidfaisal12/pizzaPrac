@@ -5,7 +5,7 @@ const UpperNav = (props) => {
 
 
   return (
-    <div className="h-[8vh] relative w-full bg-white flex justify-between px-[150px] items-center">
+    <div className="h-[8vh] sticky top-0 z-50 w-full bg-white flex justify-between px-[150px] items-center">
       <div className=" flex w-[60px] items-center">
         <Image
           className="object-cover"

@@ -82,7 +82,7 @@ const AmountTab = ({ handleOnSubmit }) => {
           <button
             form="my-form"
             type="submit"
-            onClick={handleOnSubmit}
+            // onClick={handleOnSubmit}
             className="mt-auto font-bold w-full bg-[#03911f] text-white py-3 rounded-md "
           >
             Place Order

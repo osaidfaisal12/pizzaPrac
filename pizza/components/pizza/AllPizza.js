@@ -7,7 +7,7 @@ const AllPizza = (props) => {
   const { pizzaData } = props;
 
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div className="flex flex-col items-center justify-center mb-20">
       <MainTitle distitle="Delicious Delight Pizza" />
       <div className="flex flex-wrap justify-center items-center gap-8">
         {pizzaData.map((pizza) => {

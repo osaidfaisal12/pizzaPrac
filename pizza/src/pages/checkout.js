@@ -1,14 +1,18 @@
 import Image from "next/image";
 import React, { useContext } from "react";
 import CheckoutOverlay from "../../components/checkout/CheckoutOverlay";
-import { OrdersStoreProvider } from "../../data-utils/OrdersStore";
+import { StoreProvider } from "../../data-utils/Store";
+import Link from "next/link";
 
 const checkout = () => {
 
-  const ctx = useContext(OrdersStoreProvider);
+  const ctx = useContext(StoreProvider);
 
   return (
     <div className="min-h-screen w-full ">
+      {
+        ctx.ordered === false ? (
+          <div>
       <div className="flex items-center justify-center h-[200px] w-full">
         <Image
           className="object-cover"
@@ -18,12 +22,16 @@ const checkout = () => {
           alt="pizza"
         />
       </div>
-      {
-        ctx.ordered === false ? (
+      
           <div className="w-full min-h-[600px] px-[100px]">
         <CheckoutOverlay/>
-      </div>
-        ) : <p>Order</p>
+      </div></div>
+        ) : <div className="flex justify-center items-center flex-col h-screen">
+          <Image src="/correct.png" alt="ordered" height={150} width={150} />
+          <h2 className="font-bold text-[1.5rem] mt-6">Order Placed</h2>
+          <p>Thank You for ordering</p>
+          <Link href="/" className="mt-4 text-blue-700">Order more items</Link>
+        </div>
       }
       
     </div>

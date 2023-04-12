@@ -2,13 +2,13 @@ import { useFormik } from "formik";
 import Image from "next/image";
 import React, { useContext, useState } from "react";
 import { signUpSchema } from "../../schemas";
-import { OrdersStoreProvider } from "../../data-utils/OrdersStore";
 import axios from "axios";
+import { StoreProvider } from "../../data-utils/Store";
 
 const Form = () => {
   const [activePayment, setActivePayment] = useState("cash");
 
-  const ctx = useContext(OrdersStoreProvider);
+  const ctx = useContext(StoreProvider);
 
   function btnHandlers(method) {
     setActivePayment(method);
@@ -34,10 +34,21 @@ const Form = () => {
         Payment_Method: "cash",
       },
       validationSchema: signUpSchema,
-      onSubmit: (values) => {
+      onSubmit: async(values) => {
         // const date = new Date();
         // const orderId = `date:${date.getMonth()}/${date.getDate()}/${date.getFullYear()}_time:${date.getHours()}:${date.getMinutes()}`;
-        ctx.setOrders([values]);
+
+        await axios.post(`https://pizza-b2e64-default-rtdb.firebaseio.com//orders.json`, {
+            ...values,
+          })
+          .then((response) => {
+            ctx.setOrdered(true);
+            console.log("form submitted");
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+
       },
     });
 

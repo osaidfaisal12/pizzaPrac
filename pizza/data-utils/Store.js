@@ -1,11 +1,16 @@
 const { createContext, useState, useEffect } = require("react");
 
-export const StoreProvider = createContext({});
+export const StoreProvider = createContext({
+  ordered: false,
+  setOrdered: () => {},
+});
 
 export function Store(props) {
   const [cartItems, setCartItems] = useState([]); // items in the cart
   const [noOfItems, setNoOfItems] = useState(0);
   const [data, setdata] = useState([]); //list of all the items
+  const [ordered, setOrdered] = useState(false)
+
 
   function setDataHandler(itemsList) {
     const newList = [...itemsList];
@@ -71,6 +76,8 @@ export function Store(props) {
     removeToCartHandler: removeItemHandler,
     data: data,
     setData: setDataHandler,
+    ordered: ordered,
+    setOrdered: setOrdered,
   };
   return (
     <StoreProvider.Provider value={value}>
