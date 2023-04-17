@@ -35,11 +35,13 @@ const Form = () => {
       },
       validationSchema: signUpSchema,
       onSubmit: async(values) => {
-        // const date = new Date();
+        const currentDate = new Date();
         // const orderId = `date:${date.getMonth()}/${date.getDate()}/${date.getFullYear()}_time:${date.getHours()}:${date.getMinutes()}`;
+        const date = currentDate.toLocaleDateString('en-US', {year: 'numeric', month: 'long', day: 'numeric'})
+        const time = currentDate.toLocaleTimeString()
 
         await axios.post(`https://pizza-b2e64-default-rtdb.firebaseio.com//orders.json`, {
-            ...values,
+            ...values, date : date, time: time , items: [...ctx.cartitems],
           })
           .then((response) => {
             ctx.setOrdered(true);

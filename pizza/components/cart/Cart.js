@@ -7,7 +7,7 @@ const Cart = (props) => {
   const ctx = useContext(StoreProvider);
 
   return (
-    <div className="fixed inline-block z-10 inset-0 bg-black/50 h-screen">
+    <div className="fixed inline-block z-30 inset-0 bg-black/50 h-screen">
       <div className="fixed z-10 inset-0 bg-white px-4 py-4 w-[450px] ml-auto h-full">
         <div className="h-full flex flex-col">
           <div className="hs-[10vh]">
