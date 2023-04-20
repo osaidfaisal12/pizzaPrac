@@ -1,6 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
-import OrderDetails from "./OrderDetails";
+import React, { useContext, useEffect, useState } from "react";
 import OrderDetailsOverlay from "./OrderDetailsOverlay";
 
 const Orders = () => {
@@ -19,6 +18,7 @@ const Orders = () => {
           ...response.data[key],
         });
       }
+
       setOrders(orderItems);
     };
     fetchData();
@@ -32,7 +32,7 @@ const Orders = () => {
             key={order.id}
             className="bg-white px-2 flex justify-center items-center py-2 rounded-2xl"
           >
-            <OrderDetailsOverlay order={order} index={index} />
+            <OrderDetailsOverlay order={order} index={index} tabIndex = '1'/>
           </div>
         );
       })}

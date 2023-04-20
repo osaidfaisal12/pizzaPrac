@@ -1,7 +1,6 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import Orders from "../../adminComponent/Orders";
-import Menu from "../../adminComponent/Menu";
+import React, {  useState } from "react";
+import Orders from "../../../adminComponent/Orders";
+import Menu from "../../../adminComponent/Menu";
 
 const admin = () => {
   const [username, setUsername] = useState("");
@@ -68,23 +67,23 @@ const admin = () => {
           </button>
         </form>
       ) : (
-        <div className="w-[80%] flex flex-col min-h-[600px] border-2 bg-slate-200 p-8 rounded-2xl">
-          <div className="text-[1.125rem] mx-auto flex items-center justify-center bg-slate-300 rounded-full">
+        <div className="flex flex-col w-screen min-h-screen">
+          <div className="text-[1.125rem] px-2 py-2 mx-auto mt-10 flex items-center text-white justify-center bg-[#023047]">
             <button
               className={`${
-                activeTab === "orders" ? "bg-slate-400 text-white" : null
-              } border-8 border-slate-300 px-6 py-2 rounded-full h-full`}
+                activeTab === "orders" ? " text-white bg-[#ffb703]" : null
+              }  px-6 py-2 h-full`}
               onClick={() => activeTabHandler("orders")}
             >
               Orders
             </button>
             <button
               className={`${
-                activeTab === "menus" ? "bg-slate-400 text-white" : null
-              } border-8 border-slate-300 px-7 py-2 rounded-full h-full`}
+                activeTab === "menus" ? "bg-[#ffb703] text-white" : null
+              }   px-6 py-2 h-full`}
               onClick={() => activeTabHandler("menus")}
             >
-              Menu
+              Order History
             </button>
           </div>
           <div>{activeTab === "orders" ? <Orders /> : <Menu />}</div>

@@ -1,43 +1,44 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import OrderDetailsOverlay from "./OrderDetailsOverlay";
 
-const Menu = () => {
-  const [menuItems, setMenuItems] = useState([]);
+
+function Menu (){
+  const [orders, setOrders] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(
-        "https://pizza-b2e64-default-rtdb.firebaseio.com/pizza.json"
+        "https://pizza-b2e64-default-rtdb.firebaseio.com/orderHistory.json"
       );
 
-      const menu = [];
+      const orderItems = [];
       for (const key in response.data) {
-        menu.push({
+        orderItems.push({
           id: key,
           ...response.data[key],
         });
       }
-      setMenuItems(menu);
+
+      setOrders(orderItems);
     };
     fetchData();
   }, []);
 
-
   return (
-    <div>
-      {
-        menuItems.map((item) => {
-          return (
-            <div className='bg-white '>
-              <h1>{item.title}</h1>
-              <h2>{item.description}</h2>
-              <h3>{item.amount}</h3>
-            </div>
-          )
-        })
-      }
+    <div className="flex items-center justify-center gap-4 flex-col my-10">
+      {orders.map((order, index) => {
+        return (
+          <div
+            key={order.id}
+            className="bg-white px-2 flex justify-center items-center py-2 rounded-2xl"
+          >
+            <OrderDetailsOverlay order={order} index={index} tabIndex = '2'/>
+          </div>
+        );
+      })}
     </div>
-  )
-}
+  );
+};
 
-export default Menu
+export default Menu;
