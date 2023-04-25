@@ -8,9 +8,9 @@ const Cart = (props) => {
 
   return (
     <div className="fixed inline-block z-30 inset-0 bg-black/50 h-screen">
-      <div className="fixed z-10 inset-0 bg-white px-4 py-4 w-[450px] ml-auto h-full">
+      <div className="fixed z-10 inset-0 bg-white px-4 py-4 md:w-[450px] w-[350px] ml-auto h-full">
         <div className="h-full flex flex-col">
-          <div className="hs-[10vh]">
+          <div className="h-[10vh]">
             <div className="flex justify-between">
               <h2 className="text-black text-[1.5rem]">Your Cart</h2>
               <button
@@ -45,7 +45,7 @@ const Cart = (props) => {
           {ctx.cartitems.length > 0 && (
             <Link
               href="/checkout"
-              className="mt-auto w-full bg-[#03911f] text-white py-4 rounded-md text-center"
+              className="mt-auto w-full bg-[#03911f] text-white md:py-4 py-3 rounded-md text-center"
             >
               Proceed
             </Link>

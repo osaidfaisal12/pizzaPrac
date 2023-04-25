@@ -1,6 +1,7 @@
 import React, {  useState } from "react";
 import Orders from "../../../adminComponent/Orders";
-import Menu from "../../../adminComponent/Menu";
+import History from "../../../adminComponent/History";
+import MenuItems from "../../../adminComponent/MenuItems";
 
 const admin = () => {
   const [username, setUsername] = useState("");
@@ -31,7 +32,7 @@ const admin = () => {
   };
 
   return (
-    <div className="flex w-screen h-screen items-center justify-center">
+    <div className="flex w-screen min-h-screen items-center justify-center">
       {isSubmitting ? (
         <form
           onSubmit={submitHandler}
@@ -79,14 +80,22 @@ const admin = () => {
             </button>
             <button
               className={`${
+                activeTab === "Order_History" ? "bg-[#ffb703] text-white" : null
+              }   px-6 py-2 h-full`}
+              onClick={() => activeTabHandler("Order_History")}
+            >
+              Order History
+            </button>
+            <button
+              className={`${
                 activeTab === "menus" ? "bg-[#ffb703] text-white" : null
               }   px-6 py-2 h-full`}
               onClick={() => activeTabHandler("menus")}
             >
-              Order History
+              Menu
             </button>
           </div>
-          <div>{activeTab === "orders" ? <Orders /> : <Menu />}</div>
+          <div>{activeTab === "orders" ? <Orders /> : activeTab === "menus" ? <MenuItems />: <History />}</div>
         </div>
       )}
     </div>

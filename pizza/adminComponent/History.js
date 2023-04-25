@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import OrderDetailsOverlay from "./OrderDetailsOverlay";
 
 
-function Menu (){
+function History (){
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
@@ -41,4 +41,4 @@ function Menu (){
   );
 };
 
-export default Menu;
+export default History;

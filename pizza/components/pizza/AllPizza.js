@@ -9,7 +9,7 @@ const AllPizza = (props) => {
   return (
     <div className="flex flex-col items-center justify-center mb-20">
       <MainTitle distitle="Delicious Delight Pizza" />
-      <div className="flex flex-wrap justify-center items-center gap-8">
+      <div className="flex flex-wrap justify-center items-center md:gap-8 gap-4">
         {pizzaData.map((pizza) => {
           return <ItemOverlay key={pizza.id} pizza={pizza} />;
         })}

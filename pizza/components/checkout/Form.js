@@ -124,7 +124,7 @@ const Form = () => {
             value={values.Alternate_Number}
             onChange={handleChange}
             onBlur={handleBlur}
-            placeholder="03xx-xxxxxxx"
+            placeholder="3xx-xxxxxxx"
             className="mt-1 px-3 py-4 rounded-md drop-shadow-md"
           />
           {errors.Alternate_Number && touched.Alternate_Number ? (

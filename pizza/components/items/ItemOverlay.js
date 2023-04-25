@@ -8,20 +8,20 @@ const ItemOverlay = ({ pizza }) => {
   return (
     <div className="shadow-lg shadow-gray-400 rounded-md cursor-pointer">
       <div
-        className="flex justify-center gap-4  p-2 "
+        className="flex justify-center lg:gap-4 md:gap-2 p-2 gap-1 "
         onClick={() => setOpenDetails(true)}
       >
-        <div className="w-[200px] h-[200px] relative  rounded-md overflow-hidden">
+        <div className="lg:w-[200px] lg:h-[200px] md:w-[150px] md:h-[150px] w-[125px] h-[125px] relative  rounded-md overflow-hidden">
           <Image src={img} alt={title} fill />
         </div>
-        <div className="flex flex-col justify-between py-4">
+        <div className="flex flex-col justify-between lg:py-4 ">
           <div>
-            <h3 className="text-[1.2rem] font-[700]">{title}</h3>
-            <p className="pr-2 w-[300px]">{description}</p>
+            <h3 className="lg:text-[1.2rem] md:font-[700] font-[600]">{title}</h3>
+            <p className="lg:pr-2 lg:w-[300px] md:w-[250px] w-[200px] lg:text-[1rem] text-[0.875rem]">{(description).toLowerCase().substring(0, 70) + ' ...'}</p>
           </div>
           <div className="flex flex-col">
-            <p className="font-[700]">${small.amount}</p>
-            <button className="bg-[#03911f] px-2 w-[35px] ml-auto rounded-lg text-[1.5rem] font-bold text-white">
+            <p className="lg:font-[700] font-[600]">${small.amount}</p>
+            <button className="bg-[#03911f] md:px-3 md:py-1 invisible md:visible ml-auto rounded-lg md:text-[1.5rem] font-bold text-white">
               +
             </button>
           </div>

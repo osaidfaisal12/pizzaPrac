@@ -22,16 +22,16 @@ const CartItem = (props) => {
   };
 
   return (
-    <div className="flex gap-3 my-4">
+    <div className="flex md:gap-3 gap-2 md:my-4 my-3">
       <div className="w-[80px] h-[80px] object-cover relative">
         <Image src={img} alt={title} fill />
       </div>
-      <div className="flex flex-col w-[300px]">
+      <div className="flex flex-col md:w-[300px] w-[225px]">
         <div className="flex justify-between">
-          <p className="text-[1.2rem] font-bold">{title}<span className="text-[0.8rem] mx-[6px] font-[400]">({type})</span></p>
+          <p className="md:text-[1.2rem] font-bold">{title}<span className="text-[0.8rem] mx-[6px] font-[400]">({type})</span></p>
           <p className="font-bold">${parseInt(amount) * parseInt(count)}</p>
         </div>
-        <p>{description}</p>
+        <p>{(description).toLowerCase().slice(0,40) + " ..."}</p>
         <div className="ml-auto text-center">
           <div className="flex  mt-auto gap-3">
             <button onClick={() => addItemHandler(id,type)}>+</button>

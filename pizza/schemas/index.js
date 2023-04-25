@@ -24,3 +24,11 @@ export const signUpSchema = Yup.object({
     .required("Enter your nearest landmark"),
   Email: Yup.string().email().required("Enter your email"),
 });
+
+export const menuSchema = Yup.object({
+  title: Yup.string().min(3).max(20).required("Enter the title"),
+  small_amount: Yup.number().min(1).max(4).required("Enter the small amount"),
+  medium_amount: Yup.number().min(1).max(4).required("Enter the medium amount"),
+  large_amount: Yup.number().min(1).max(4).required("Enter the large amount"),
+  description: Yup.string().min(4).max(40).required("Enter the description"),
+});
