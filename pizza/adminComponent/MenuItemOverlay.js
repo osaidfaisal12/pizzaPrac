@@ -6,6 +6,7 @@ const MenuItemOverlay = (props) => {
     const [openDetails, setOpenDetails] = useState(false);
     const { img, title, description, small, medium, large, id } = props;
 
+
   return (
     <div className="shadow-lg shadow-gray-400 rounded-md cursor-pointer flex flex-col">
       <div

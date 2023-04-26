@@ -36,7 +36,6 @@ const Form = () => {
       validationSchema: signUpSchema,
       onSubmit: async(values) => {
         const currentDate = new Date();
-        // const orderId = `date:${date.getMonth()}/${date.getDate()}/${date.getFullYear()}_time:${date.getHours()}:${date.getMinutes()}`;
         const date = currentDate.toLocaleDateString('en-US', {year: 'numeric', month: 'long', day: 'numeric'})
         const time = currentDate.toLocaleTimeString()
 
@@ -62,8 +61,7 @@ const Form = () => {
         </h2>
         <p>Just a last step, please enter your details:</p>
       </div>
-      {/* Title and FullName */}
-      <div className="mt-[24px] flex justify-start gap-5 items-center w-full">
+      <div className="mt-[24px]  flex justify-start lg:gap-5 gap-3 items-center w-full">
         <div className="flex flex-col justify-start">
           <label htmlFor="Title">Title</label>
           <select
@@ -72,7 +70,7 @@ const Form = () => {
             value={values.Title}
             onChange={handleChange}
             onBlur={handleBlur}
-            className="px-3 py-4 drop-shadow-md mt-1 rounded-md"
+            className="px-2 py-3 drop-shadow-md mt-1 rounded-md"
           >
             <option value="Mr.">Mr.</option>
             <option value="Mrs.">Mrs.</option>
@@ -89,7 +87,7 @@ const Form = () => {
             onChange={handleChange}
             onBlur={handleBlur}
             placeholder="Enter Your Full Name"
-            className="mt-1 px-3 py-4 rounded-md drop-shadow-md"
+            className="mt-1 px-2 py-3 rounded-md drop-shadow-md"
           />
           {errors.Full_Name && touched.Full_Name ? (
             <p className="text-red-500">{errors.Full_Name}</p>
@@ -98,7 +96,7 @@ const Form = () => {
       </div>
 
       {/* Number*/}
-      <div className="mt-[24px] flex justify-start gap-5 items-center w-full">
+      <div className="mt-[24px] flex lg:flex-row flex-col justify-start lg:gap-5 gap-3 items-center w-full">
         <div className="flex flex-col justify-start w-full">
           <label htmlFor="Mobile_Number">Mobile Number</label>
           <input
@@ -108,8 +106,8 @@ const Form = () => {
             value={values.Mobile_Number}
             onChange={handleChange}
             onBlur={handleBlur}
-            placeholder="03xx-xxxxxxx"
-            className="mt-1 px-3 py-4 rounded-md drop-shadow-md"
+            placeholder="3xx-xxxxxxx"
+            className="mt-1 px-2 py-3 rounded-md drop-shadow-md"
           />
           {errors.Mobile_Number && touched.Mobile_Number ? (
             <p className="text-red-500">{errors.Mobile_Number}</p>
@@ -125,7 +123,7 @@ const Form = () => {
             onChange={handleChange}
             onBlur={handleBlur}
             placeholder="3xx-xxxxxxx"
-            className="mt-1 px-3 py-4 rounded-md drop-shadow-md"
+            className="mt-1 px-2 py-3 rounded-md drop-shadow-md"
           />
           {errors.Alternate_Number && touched.Alternate_Number ? (
             <p className="text-red-500">{errors.Alternate_Number}</p>
@@ -134,7 +132,7 @@ const Form = () => {
       </div>
 
       {/* Address and instructions*/}
-      <div className="mt-[24px] flex justify-start flex-col gap-5 items-center w-full">
+      <div className="mt-[24px] flex justify-start flex-col lg:gap-5 gap-5 items-center w-full">
         <div className="flex flex-col justify-start w-full">
           <label htmlFor="Delivery_Address">Delivery Address</label>
           <input
@@ -170,7 +168,7 @@ const Form = () => {
       </div>
 
       {/* Landark and email*/}
-      <div className="mt-[24px] flex justify-start gap-5 items-center w-full">
+      <div className="mt-[24px] flex lg:flex-row flex-col justify-start gap-5 items-center w-full">
         <div className="flex flex-col justify-start w-full">
           <label htmlFor="Nearest_Landmark">Nearest Landmark</label>
           <input

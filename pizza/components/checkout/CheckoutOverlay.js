@@ -6,11 +6,11 @@ import AmountTab from "./AmountTab";
 const CheckoutOverlay = () => {
 
   return (
-    <div className="min-h-[600px] w-full mb-[80px] flex gap-5 justify-center items-stretch">
-      <div className="p-10 rounded-2xl w-[60%] bg-gray-100">
+    <div className="lg:min-h-[600px] w-full lg:mb-[80px] mb-[50px] flex md:flex-row flex-col md:gap-5 gap-2 justify-center items-stretch">
+      <div className="lg:p-10 p-6 rounded-2xl md:w-[60%] bg-gray-100">
         <Form />
       </div>
-      <div className="flex-1 p-10 rounded-2xl w-[40%] bg-gray-100">
+      <div className="flex-1 p-6 rounded-2xl md:w-[40%] bg-gray-100">
         <AmountTab/>
       </div>
     </div>

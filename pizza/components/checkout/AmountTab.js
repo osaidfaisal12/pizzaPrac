@@ -34,7 +34,7 @@ const AmountTab = ({ handleOnSubmit }) => {
             ctx.cartitems.map((current) => {
               return (
                 <div key={`${current.id}_${current.type}`}>
-                  <div className="flex justify-between items-center">
+                  <div className="flex justify-between lg:flex-row flex-col">
                     <p className="font-bold">
                       {current.count} x {current.title} ({current.type})
                     </p>

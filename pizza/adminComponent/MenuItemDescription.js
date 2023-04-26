@@ -1,10 +1,11 @@
 import axios from "axios";
 import { useFormik } from "formik";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import { menuSchema } from "../schemas";
 
 const MenuItemDescription = (props) => {
+
   const { values, handleChange, handleSubmit, errors, touched } = useFormik({
     initialValues: {
       title: props.title,
@@ -15,7 +16,7 @@ const MenuItemDescription = (props) => {
     },
     onSubmit: async (values) => {
       console.log(props.id);
-
+      console.log("displaying");
       await axios
         .put(`https://pizza-b2e64-default-rtdb.firebaseio.com/pizza/${props.id}.json`, {
           img: props.img,
@@ -35,6 +36,16 @@ const MenuItemDescription = (props) => {
         });
     },
   });
+
+  const deleteHandler = async (onClose) => {
+    try {
+      const response = await axios.delete(`https://pizza-b2e64-default-rtdb.firebaseio.com/pizza/${props.id}.json`);
+      onClose()
+      console.log(response);
+    } catch (error) {
+      console.error("error");
+    }
+  }
 
   return (
     <form
@@ -148,12 +159,20 @@ const MenuItemDescription = (props) => {
                             <button onClick={addCountHandler} >+</button>
                         </div> */}
             <button
+              className="text-center bg-red-500 text-white rounded-lg py-3 w-full"
+              type="button"
+              onClick={()=>deleteHandler(props.onClose)}
+            >
+              Delete
+            </button>
+            <button
               className="text-center bg-[#03911f] text-white rounded-lg py-3 w-full"
               type="submit"
               id="form"
             >
-              Add To Cart
+              Save
             </button>
+            
           </div>
         </div>
       </div>
