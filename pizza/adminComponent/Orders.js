@@ -25,12 +25,12 @@ const Orders = () => {
   }, []);
 
   return (
-    <div className="flex items-center justify-center gap-4 flex-col my-10">
+    <div className="flex items-center justify-center md:gap-4 gap-2 flex-col my-10">
       {orders.map((order, index) => {
         return (
           <div
             key={order.id}
-            className="bg-white px-2 flex justify-center items-center py-2 rounded-2xl"
+            className="bg-white md:px-2 px-1 flex justify-center items-center md:py-2 py-1 md:rounded-2xl rounded-xl"
           >
             <OrderDetailsOverlay order={order} index={index} tabIndex = '1'/>
           </div>

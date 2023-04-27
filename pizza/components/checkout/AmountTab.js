@@ -38,7 +38,7 @@ const AmountTab = ({ handleOnSubmit }) => {
                     <p className="font-bold">
                       {current.count} x {current.title} ({current.type})
                     </p>
-                    <p>${parseInt(current.amount) * parseInt(current.count)}</p>
+                    <p>Rs.{parseInt(current.amount) * parseInt(current.count)}</p>
                   </div>
                   <button
                     onClick={() => removeItemHandler(current.id, current.type)}
@@ -60,19 +60,19 @@ const AmountTab = ({ handleOnSubmit }) => {
       <div>
         <div className="flex justify-between items-center">
           <p>Total</p>
-          <p>$ {isamount.toFixed(2)}</p>
+          <p>Rs.{isamount.toFixed(2)}</p>
         </div>
         <div className="flex justify-between items-center">
           <p>Tax 13%</p>
-          <p>$ {(isamount * 0.13).toFixed(2)}</p>
+          <p>Rs.{(isamount * 0.13).toFixed(2)}</p>
         </div>
         <div className="flex justify-between items-center">
           <p>Delivery</p>
-          <p>$ 5.00</p>
+          <p>Rs.50.00</p>
         </div>
         <div className="flex justify-between items-center">
           <p>Grand Total</p>
-          <p>$ {(isamount * 0.13 + 5 + isamount).toFixed(2)}</p>
+          <p>Rs.{(isamount * 0.13 + 50 + isamount).toFixed(2)}</p>
         </div>
       </div>
 

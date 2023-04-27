@@ -21,7 +21,7 @@ const checkout = () => {
             />
           </div>
 
-          <div className="w-full md:min-h-[600px] md:px-[100px] px-[8px]">
+          <div className="w-full md:min-h-[600px] md:px-[100px] px-[16px]">
             <CheckoutOverlay />
           </div>
         </div>

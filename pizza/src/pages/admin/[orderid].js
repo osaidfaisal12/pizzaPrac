@@ -54,51 +54,51 @@ const OrderId = () => {
   };
 
   return (
-    <div className="flex justify-center  w-screen h-screen p-20">
-      <div className="bg-[#023047] text-white p-10 basis-2/4 flex flex-col gap-4 rounded-l-3xl ">
-        <h2 className="font-bold text-[1.5rem] ">Order Details</h2>
+    <div className="flex md:flex-row flex-col justify-center md:w-screen md:h-screen lg:p-20 md:p-8">
+      <div className="bg-[#023047] text-white lg:p-10 md:p-6 p-4 basis-2/4 flex flex-col gap-4 lg:rounded-l-3xl md:rounded-l-2xl ">
+        <h2 className="font-bold md:text-[1.5rem] ">Order Details</h2>
         <div className="flex gap-4">
           <p>{order.date}</p>
           <p className="font-bold">{order.time}</p>
         </div>
-        <div className="flex justify-between gap-2 font-bold bg-[#ffb703] text-white p-2 rounded-md">
+        <div className="flex justify-between gap-2 lg:font-bold bg-[#ffb703] text-white p-2 rounded-md">
           <div className="flex gap-4">
             <p>Title</p>
           </div>
-          <div className="flex gap-8">
+          <div className="flex md:gap-8 gap-5">
             <p>No of count</p>
             <p>Amount</p>
           </div>
         </div>
-        <div className="flex gap-4 flex-col h-[60%] flex-nowrap  overflow-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']">
+        <div className="flex lg:gap-4 md:gap-3 gap-8 text-[0.75rem] md:text-[1rem] flex-col md:h-[60%] flex-nowrap  overflow-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']">
         {order.items.map((item, index) => {
           const itemAmount = parseInt(item.amount)*parseInt(item.count);
           totalAmount = totalAmount + itemAmount;
 return (
             <div
               key={item.id}
-              className="flex flex-nowrap justify-between gap-2 p-3 text-white rounded-md"
+              className="flex flex-nowrap justify-between gap-8 lg:p-3 md:p-2 text-white rounded-md"
             >
-              <div className="flex gap-4">
-                <h2 className="font-bold">Item # {index + 1}</h2>
+              <div className="flex lg:gap-4 md:gap-2 gap-1">
+                <h2 className="md:font-bold">Item # {index + 1}</h2>
                 <p>{item.title}</p>
                 <p>({item.type})</p>
               </div>
-              <div className="flex gap-16">
+              <div className="flex lg:gap-16 gap-14">
                 <p>x{item.count}</p>
-                <p>{parseInt(item.amount)*parseInt(item.count)}$</p>
+                <p>Rs.{parseInt(item.amount)*parseInt(item.count)}</p>
               </div>
             </div>
           );
         })}</div>
-        <div className="flex flex-col justify-end  p-3 gap-4 ">
+        <div className="flex flex-col justify-end  lg:p-3 md:p-2 lg:gap-4 gap-3 ">
           <hr className="border-1 border-white" />
-          <p className="font-bold flex justify-end ">Total Amount = {totalAmount}$</p>
+          <p className="lg:font-bold flex justify-end ">Total Amount = {totalAmount}$</p>
         </div>
       </div>
 
-      <div className="bg-[#8ecae6] text-white gap-4 flex flex-col justify-between  basis-1/4 rounded-r-3xl p-10">
-        <div className="flex gap-4 flex-col">
+      <div className="bg-slate-100 text-black gap-4 flex flex-col justify-between  basis-1/4 rounded-r-3xl p-10">
+        <div className="flex lg:gap-4 gap-3 flex-col">
           <h2 className="font-bold text-[1.5rem] text-[#41337A]">
             Customers Details
           </h2>

@@ -20,7 +20,7 @@ const ItemOverlay = ({ pizza }) => {
             <p className="lg:pr-2 lg:w-[300px] md:w-[250px] w-[200px] lg:text-[1rem] text-[0.875rem]">{(description).toLowerCase().substring(0, 70) + ' ...'}</p>
           </div>
           <div className="flex flex-col">
-            <p className="lg:font-[700] font-[600]">${small.amount}</p>
+            <p className="lg:font-[700] font-[600]">Rs.{small.amount}</p>
             <button className="bg-[#03911f] md:px-3 md:py-1 invisible md:visible ml-auto rounded-lg md:text-[1.5rem] font-bold text-white">
               +
             </button>

@@ -51,7 +51,7 @@ const DetailedItems = (props) => {
                         <button onClick={props.onClose} className='h-full font-bold'>X</button>
                     </div>
 
-                    <p className='lg:text-[1.375rem] text-[1.25rem] mb-2 font-[700]' >${props.small.amount}</p>
+                    <p className='lg:text-[1.375rem] text-[1.25rem] mb-2 font-[700]' >Rs.{props.small.amount}</p>
                     <p className='mb-2'>{props.description}</p>
                     <div className='flex flex-col lg:gap-4 gap-2 text-[1.2rem] lg:mt-6 mt-4 mb-8'>
                         <div className='flex justify-between'> 
@@ -59,7 +59,7 @@ const DetailedItems = (props) => {
                                 <input type='radio' name='radio' id='small' value={props.small.amount} onChange={handleRadioClick} defaultChecked={selectedValue === props.small.amount} className='mr-2' />
                                 <label htmlFor='small' >{props.small.size}</label>
                             </div>
-                            <p>{props.small.amount}$</p>
+                            <p>Rs.{props.small.amount}</p>
 
                         </div>
                         <hr />
@@ -68,7 +68,7 @@ const DetailedItems = (props) => {
                                 <input type='radio' name='radio' id='medium' value={props.medium.amount} onChange={handleRadioClick} defaultChecked={selectedValue === props.medium.amount} className='mr-2' />
                                 <label htmlFor='medium' >{props.medium.size}</label>
                             </div>
-                            <p>{props.medium.amount}$</p>
+                            <p>Rs.{props.medium.amount}</p>
 
                         </div>
                         <hr />
@@ -77,7 +77,7 @@ const DetailedItems = (props) => {
                                 <input type='radio' name='radio' id='large' value={props.large.amount} onChange={handleRadioClick} defaultChecked={selectedValue === props.large.amount} className='mr-2' />
                                 <label htmlFor='large' >{props.large.size}</label>
                             </div>
-                            <p>{props.large.amount}$</p>
+                            <p>Rs.{props.large.amount}</p>
 
                         </div>
                         <hr />

@@ -50,23 +50,23 @@ const MenuItemDescription = (props) => {
   return (
     <form
       id="form"
-      className="fixed inset-0 z-10 w-screen h-screen bg-black/50 overflow-hidden flex justify-center items-center"
+      className="fixed inset-0 w-screen h-screen bg-black/50 overflow-hidden flex justify-center items-center z-30"
       onSubmit={handleSubmit}
     >
-      <div className="w-[800px] flex h-[500px] bg-white rounded-2xl">
-        <div className="w-[50%] h-[100%] flex justify-center items-center">
-          <div className="overflow-hidden relative object-contain w-[350px] h-[350px]">
-            <Image width={350} height={350} src={props.img} alt={props.title} />
+      <div className="lg:w-[800px] md:w-[700px] w-[350px] flex flex-col md:flex-row lg:h-[500px] md:h-[400px] h-[650px] bg-white overflow-auto rounded-2xl">
+        <div className="md:w-[50%] h-[100%] flex justify-center items-center">
+          <div className="overflow-hidden relative object-contain lg:w-[350px] w-[350px] lg:h-[350px] h-[350px]">
+            <Image fill src={props.img} alt={props.title} />
           </div>
         </div>
-        <div className="flex flex-col w-[50%] h-full px-4 py-8">
-          <div className="flex justify-between items-center mb-2">
-            <div className="flex items-center justify-center">
-              <label htmlFor={values.title} className="mr-2">
+        <div className="flex flex-col md:w-[50%] h-full md:px-4 px-4 py-8">
+          <div className="flex justify-between md:items-center mb-2">
+            <div className="flex flex-col md:flex-row md:items-center justify-center">
+              <label htmlFor={values.title} className="md:mr-2">
                 Title
               </label>
               <input
-                className={`bg-slate-200 p-1 border-2 font-bold ${
+                className={`bg-slate-200 p-1 border-2 ${
                   errors.title && touched.title ? "border-red-500" : null
                 }`}
                 id="title"
@@ -75,20 +75,20 @@ const MenuItemDescription = (props) => {
                 onChange={handleChange}
               />
             </div>
-            <button onClick={props.onClose} className="font-bold">
+            <button onClick={props.onClose} className="flex font-bold">
               X
             </button>
           </div>
 
-          <div className="flex items-center">
-            <label htmlFor="amount" className="mr-2">
+          <div className="flex md:items-center md:flex-row flex-col">
+            <label htmlFor="amount" className="md:mr-2">
               Amount
             </label>
             <input
             type="number"
               id="amount"
               name="small_amount"
-              className={`bg-slate-200 p-1 border-2 font-bold ${
+              className={`bg-slate-200 p-1 border-2 ${
                 errors.title && touched.title ? "border-red-500" : null
               }`}
               value={values.small_amount}
@@ -110,11 +110,9 @@ const MenuItemDescription = (props) => {
             />
           </div>
 
-          <div className="flex flex-col gap-1 mt-2">
+          <div className="flex flex-col gap-1 mb-2">
             <div className="flex justify-between">
               <label htmlFor="small">Small</label>
-              {/* <input value={props.small.amount} id='small' /> */}
-              {/* <input type='radio' name='radio' id='small' value={props.small.amount} onChange={handleRadioClick} defaultChecked={selectedValue === props.small.amount} className='mr-2' /> */}
               <input
                 className="bg-slate-200 p-1 border-2"
                 value={values.small_amount}
@@ -125,9 +123,7 @@ const MenuItemDescription = (props) => {
             </div>
             <hr />
             <div className="flex justify-between">
-              {/* <input type='radio' name='radio' id='medium' value={props.medium.amount} onChange={handleRadioClick} defaultChecked={selectedValue === props.medium.amount} className='mr-2' /> */}
               <label htmlFor="medium">Medium</label>
-              {/* <input value={props.medium.amount} id="medium" /> */}
               <input
                 className="bg-slate-200 p-1 border-2"
                 value={values.medium_amount}
@@ -138,9 +134,7 @@ const MenuItemDescription = (props) => {
             </div>
             <hr />
             <div className="flex justify-between">
-              {/* <input type='radio' name='radio' id='large' value={props.large.amount} onChange={handleRadioClick} defaultChecked={selectedValue === props.large.amount} className='mr-2' /> */}
               <label htmlFor="large">Large</label>
-              {/* <input value={props.large.amount} id="large" /> */}
               <input
                 className="bg-slate-200 p-1 border-2"
                 value={values.large_amount}
@@ -153,11 +147,6 @@ const MenuItemDescription = (props) => {
           </div>
 
           <div className="flex gap-4 mt-auto">
-            {/* <div className='w-[30%] p-1 flex gap-4 text-[1.25rem] border-2 rounded-lg justify-center items-center border-gray-400'>
-                            <button onClick={subCountHandler}>-</button>
-                            <p>{count}</p>
-                            <button onClick={addCountHandler} >+</button>
-                        </div> */}
             <button
               className="text-center bg-red-500 text-white rounded-lg py-3 w-full"
               type="button"

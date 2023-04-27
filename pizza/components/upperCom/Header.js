@@ -10,7 +10,7 @@ import { Pagination, Autoplay } from "swiper";
 
 const Header = () => {
   return (
-    <div className="relative w-full flex h-[82vh]">
+    <div className="relative w-full flex md:h-[82vh] h-[72vh]">
       <Swiper
         spaceBetween={30}
         pagination={{

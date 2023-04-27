@@ -29,14 +29,14 @@ const MenuItems = () => {
   }, []);
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center justify-center">
       <button
         onClick={() => setOpenDetails(true)}
-        className="w-[30%] font-bold text-[1.5rem] rounded-md border-2 py-1 bg-slate-200 mt-10 "
+        className="md:w-[30%] w-[70%] font-bold text-[1.5rem] rounded-md border-2 py-1 bg-slate-200 md:mt-10 mt-6 "
       >
         +
       </button>
-      <div className="flex flex-wrap justify-center items-center md:gap-8 gap-4 my-10">
+      <div className="flex flex-wrap justify-center items-center md:gap-8 gap-4 md:my-10 my-4">
         {orders.map((order) => {
           return (
             <MenuItemOverlay

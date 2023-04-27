@@ -29,7 +29,7 @@ const CartItem = (props) => {
       <div className="flex flex-col md:w-[300px] w-[225px]">
         <div className="flex justify-between">
           <p className="md:text-[1.2rem] font-bold">{title}<span className="text-[0.8rem] mx-[6px] font-[400]">({type})</span></p>
-          <p className="font-bold">${parseInt(amount) * parseInt(count)}</p>
+          <p className="font-bold">Rs.{parseInt(amount) * parseInt(count)}</p>
         </div>
         <p>{(description).toLowerCase().slice(0,40) + " ..."}</p>
         <div className="ml-auto text-center">

@@ -69,11 +69,11 @@ const admin = () => {
         </form>
       ) : (
         <div className="flex flex-col w-screen min-h-screen">
-          <div className="text-[1.125rem] px-2 py-2 mx-auto mt-10 flex items-center text-white justify-center bg-[#023047]">
+          <div className="md:text-[1.125rem] md:px-2 px-1 md:py-2 py-1 mx-auto mt-10 flex items-center text-white justify-center bg-[#023047]">
             <button
               className={`${
                 activeTab === "orders" ? " text-white bg-[#ffb703]" : null
-              }  px-6 py-2 h-full`}
+              }  md:px-6 px-3 md:py-2 py-2 h-full`}
               onClick={() => activeTabHandler("orders")}
             >
               Orders
@@ -81,7 +81,7 @@ const admin = () => {
             <button
               className={`${
                 activeTab === "Order_History" ? "bg-[#ffb703] text-white" : null
-              }   px-6 py-2 h-full`}
+              }   md:px-6 px-3 md:py-2 py-2 h-full`}
               onClick={() => activeTabHandler("Order_History")}
             >
               Order History
@@ -89,7 +89,7 @@ const admin = () => {
             <button
               className={`${
                 activeTab === "menus" ? "bg-[#ffb703] text-white" : null
-              }   px-6 py-2 h-full`}
+              }   md:px-6 px-3 md:py-2 py-2 h-full`}
               onClick={() => activeTabHandler("menus")}
             >
               Menu
